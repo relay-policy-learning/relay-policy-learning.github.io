@@ -10,7 +10,7 @@ This article was prepared using the [Distill](https://distill.pub) [template](ht
 For attribution in academic contexts, please cite this work as
 
 <pre class="citation short">Gupta et al., "Relay Policy Learning: Solving Long Horizon Tasks via Imitation
- and Reinforcement Learning", 2019.</pre>
+ and Reinforcement Learning", Conference on Robot Learning (CoRL) 2019.</pre>
 
 BibTeX citation
 

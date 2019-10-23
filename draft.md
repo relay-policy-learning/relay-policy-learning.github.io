@@ -13,10 +13,10 @@ We demonstrate the effectiveness of our method on a number of multi-stage, long-
 ______
 
 
-## Introduction
+## 1. Introduction
 
 <div class="figure">
-<img src="assets/media/franka_kitchen2.png" style="margin: 0; width: 60%;"/>
+<img src="assets/media/franka_kitchen2.png" style="margin: 0; width: 100%;"/>
 <figcaption>
 Figure 2. RPL learns complex, long-horizon manipulation tasks in a simulated kitchen environment
 </figcaption>
@@ -24,7 +24,7 @@ Figure 2. RPL learns complex, long-horizon manipulation tasks in a simulated kit
 
 
 Recent years have seen reinforcement learning (RL) successfully applied to a number of robotics tasks such as in-hand 
-manipulation(<dt-cite key="vikashICRA2016">Kumar et al.</dt-cite>), grasping(<dt-cite key="qtopt">Kalashnikov et al.</dt-cite>) 
+manipulation(<dt-cite key="vikashICRA2016">Kumar et al.</dt-cite>), grasping(<dt-cite key="kalashnikov2018qt">Kalashnikov et al.</dt-cite>) 
 and door opening (<dt-cite key="shaneDDPG">Gu et al.</dt-cite>). However, these applications have been largely constrained 
 to relatively simple short-horizon skills. Hierarchical reinforcement learning (HRL) (<dt-cite key="hrlreview">Mahadevan et al.</dt-cite>) 
 has been proposed as a potential solution that should scale to challenging long-horizon problems, by explicitly introducing 
@@ -56,12 +56,13 @@ First, the approach is very general, in that it can be applied to any demonstrat
  and imitation learning algorithms.
 
 
-## Preliminaries
+## 2. Preliminaries
 **Goal-conditioned reinforcement learning**: We define $\mathcal{M} = (S, A, P, r)$ to be a finite-horizon Markov 
 decision process (MDP), where $S$ and $A$ are state and action spaces, $P(s_{t+1} \mid s_t, a_t)$ is a transition function, 
 $r$ a reward function. The goal of RL is to find a policy $\pi(a | s)$ that maximizes expected reward over trajectories 
 induced by the policy: $\mathbb{E}_{\pi}[\sum_{t=0}^T \gamma^t r_i(s_t, a_t)]$. To extend RL to multiple tasks, 
-a goal-conditioned formulation (~\cite{kaelbling}) can be used to learn a policy $\pi(a | s, s_g)$ which maximizes the 
+a goal-conditioned formulation (<dt-cite key="kaelbling">Kaelbling et al.</dt-cite>) can be used to learn a policy 
+$\pi(a | s, s_g)$ which maximizes the 
 expected reward $r(a, s, s_g)$ with respect to a goal distribution $s_g \sim \mathcal{G}$ as 
 follows: $\mathbb{E}_{s_g\sim\mathcal{G}} [\mathbb{E}_{\pi}[\sum_{t=0}^T \gamma^t r_i(s_t, a_t, s_g)]]$. 
 
@@ -76,7 +77,7 @@ The objective is to learn a goal-conditioned policy $\pi(a|s, s_g)$ that is able
 $s_g$ by imitating the demonstrations. 
 
 
-## Relay Policy Learning
+## 3. Relay Policy Learning
 
 
 In this section, we describe our proposed relay policy learning (RPL) algorithm, which leverages unstructured demonstrations 
@@ -86,7 +87,7 @@ described below. While RIL by itself is not able to solve the most challenging t
 it provides a very effective initialization for fine-tuning. 
 
 <div class="figure">
-<img src="assets/media/main_fig2-1.png" style="margin: 0; width: 60%;"/>
+<img src="assets/media/main_fig2-1.png" style="margin: 0; width: 100%;"/>
 <figcaption>
 Figure 3. Relay policy learning: the algorithm starts with relabelling unstructured demonstrations at both the high and the low level of the hierarchical policy and then uses them to perform relay imitation learning. 
     This provides a good policy initialization for subsequent relay reinforcement fine-tuning. 
@@ -106,10 +107,10 @@ The low-level policy takes the current state $s_t$, and the subgoal $s_g^{l}$ co
 outputs an action $a_t$, which is executed in the environment. 
 
 <div class="figure">
-<img src="assets/media/sampling_fig-1.png" style="margin: 0; width: 60%;"/>
+<center><img src="assets/media/sampling_fig-1.png" style="margin: 0; width: 60%;"/></center>
 <figcaption>
-Figure 4. Relay Policy Architecture: A high level goal setter $\pi_{\theta}$ takes high level goal $s_g^h$ and 
-sets goals $s_g^l$ for a lower level policy $\pi_{\phi}$, which acts for a fixed time horizon before resampling $s_g^l$
+Figure 4. Relay Policy Architecture: A high level goal setter takes high level goal and 
+sets subgoals for a lower level policy, which acts for a fixed time horizon before resampling the subgoal
 </figcaption>
 </div>
 
@@ -117,7 +118,7 @@ Importantly, the goal setting policy $\pi_{\theta}^{h}$ makes a decision every $
 with each of its subgoals being kept constant during that period for the low-level policy, while the low-level policy 
 $\pi_{\phi}^{l}$ operates at every single time-step. 
 This provides temporal abstraction, since the high level policy operates at a coarser resolution than the low-level policy. 
-This policy architecture, while inspired by goal-conditioned HRL algorithms~\cite{HIRO}, requires a novel learning 
+This policy architecture, while inspired by goal-conditioned HRL algorithms (<dt-cite key="HIRO">Nachum et al.</dt-cite>), requires a novel learning 
 algorithm to be applicable in the context of imitation learning, which we describe in the Relay Imitation Learning section. Given a high-level 
 goal $s_g^h$, $\pi_{\theta}^{h}$ samples a subgoal $s_{g_0}^l$, which is passed to $\pi_{\theta}^{l}$ to generate action 
 $a_0$. For the subsequent $H$ steps, the goal produced by $\pi_{\theta}^{h}$ is kept fixed, while $\pi_{\theta}^{l}$ 
@@ -134,17 +135,17 @@ at test-time, though we do need to assume that the test-time goals come from the
 In order to take the most advantage of such data, we initialize our policy with our proposed relay imitation learning (RIL) algorithm. 
 RIL is a simple imitation learning procedure that uses goal relabeling and hierarchical policy decomposition which result 
 in improved handling of multi-task generalization and compounding error. RIL assumes access to the pool of demonstrations 
-(as described in ~\citet{LMP}) consisting of $N$ trajectories $\mathcal{D} = \{\tau^i, \tau^j, \tau^k, ...\}$, where 
-each trajectory consists of state-action pairs $\tau^i = \{s_0^i, a_0^i, \dots, s_T^i, a_T^i\}$. 
+(as described in <dt-cite key="LMP">Lynch et al.</dt-cite>) consisting of $N$ trajectories $\mathcal{D} = \{\tau^i, \tau^j, \tau^k, ...\}$, where 
+each trajectory consists of state-action pairs $\tau^i = \{s_0^i, a_0^i, ...., s_T^i, a_T^i\}$. 
 Importantly, these demonstrations can be attempting to reach a variety of different high level goals $s_g^h$, but we do 
 not require these goals to be specified explicitly. To learn the relay policy from these demonstrations, we construct 
-a low-level dataset $\mathcal{D}_l$, and a high-level dataset $\mathcal{D}_h$ from these demonstrations via ``relay data relabeling",
+a low-level dataset $\mathcal{D}_l$, and a high-level dataset $\mathcal{D}_h$ from these demonstrations via "relay data relabeling",
  which is described below, and use them to learn $\pi_{\theta}^{h}$ and $\pi_{\theta}^{l}$ via supervised learning at multiple levels. 
 
 We construct the low-level dataset by iterating through the pool of demonstrations and relabeling them using our 
 relay data relabelling algorithm. First, we choose a window size $W_{l}$ and generate state-goal-action tuples for 
 $\mathcal{D}_l$, $(s, s_g^l, a)$ by goal-relabeling within a sliding window along the demonstrations, as described 
-in detail below and in Algorithms~\ref{alg:ril_relabellow},~\ref{alg:ril_relabelhigh}. 
+in detail below and in Algorithms 2,3. 
 The key idea behind relay data relabeling is to consider all states that are actually reached along a demonstration 
 trajectory within $W_{l}$ time steps from any state $s_t$ to be goals reachable from the state $s_t$ by executing action $a_t$. 
 This allows us to label all states $s_{t+1}, ...., s_{t + W_{l}}$ along a valid demonstration trajectory as potential 
@@ -156,33 +157,36 @@ which is crucial when the low-level policy is being commanded potentially differ
 We employ a similar procedure for the high level, generating the high-level state-goal-action dataset $\mathcal{D}_h$. 
 We start by choosing a high-level window size $W_h$, which encompasses the high-level goals we would like to eventually reach. 
 We then generate state-goal-action tuples for $\mathcal{D}_h$, via relay data relabeling within the high-level window being 
-considered, as described in Algorithm~\ref{alg:ril_relabellow},~\ref{alg:ril_relabelhigh}. 
+considered, as described in Algorithm 2,3. 
 We also label all states $s_{t+1}, ...., s_{t + W_{h}}$ along a valid trajectory as potential high-level goals that are 
 reached from state $s_t$ by the high level policy, but we set the high-level action for a goal $j$ steps ahead $s_{t + j}$, 
 as $s_{t + \min(W_l,  j)}$ choosing a sufficiently distant subgoal as the high-level action.  
 
 Given these relay-data-relabeled datasets, we train $\pi_{\theta}^{l}$ and $\pi_{\theta}^{h}$ by maximizing the likelihood 
 of the actions taken given the corresponding states and goals:
-\begin{align}
-\label{eqn:maxlikelihood}
-&\max_{\phi, \theta} \mathbb{E}_{(s, a, s_g^l) \sim D_l}[\log \pi_{\phi}(a|s, s_g^l)] + \mathbb{E}_{(s, s_g^l, s_g^h) \sim D_h}[\log \pi_{\theta}(s_g^l|s, s_g^h)].
-\end{align}
+
+$\max_{\phi, \theta} \mathbb{E}_{(s, a, s_g^l) \sim D_l}[\log \pi_{\phi}(a|s, s_g^l)] + 
+\mathbb{E}_{(s, s_g^l, s_g^h) \sim D_h}[\log \pi_{\theta}(s_g^l|s, s_g^h)]$
+
 This procedure gives us an initialization for both the low-level and the high-level policies, without the requirement 
 for any explicit goal labeling from a human demonstrator. 
 Relay data relabeling not only allows us to learn hierarchical policies without explicit labels, but also provides algorithmic 
 improvements to imitation learning: (i) it generates more data through the relay-data-relabelling augmentation, 
 and (ii) it improves generalization since it is trained on a large variety of goals. 
 
+<div class="figure">
+<img src="assets/media/algo_rpl.png" style="margin: 0; width: 100%;"/>
+</div>
+
 
 **Relay Reinforcement Fine-tuning**
 
 The procedure described in the above section allows us to extract an effective policy initialization via relay imitation learning. 
 However, this policy is often unable to perform well across all temporally extended tasks, due to the well-known compounding errors stemming 
-from imitation learning~\cite{dagger}. 
-Reinforcement learning provides a solution to this challenge, by enabling continuous improvement of the learned policy 
+from imitation learning <dt-cite key="dagger">Ross et al.</dt-cite>. Reinforcement learning provides a solution to this challenge, by enabling continuous improvement of the learned policy 
 directly from experience. We can use RL to improve RIL policies via fine-tuning on different tasks. We employ a goal-conditioned 
-HRL algorithm that is a variant of natural policy gradient (NPG) with adaptive step size~\cite{TRPO}, where both the high-level 
-and the low-level goal-conditioned policies $\pi_{\theta}^h$ and $\pi_{\phi}^l$ are being trained with policy gradient in a decoupled optimization. 
+HRL algorithm that is a variant of natural policy gradient (NPG) with adaptive step size (<dt-cite key="TRPO">Schulman et al.</dt-cite>)
+, where both the high-level and the low-level goal-conditioned policies $\pi_{\theta}^h$ and $\pi_{\phi}^l$ are being trained with policy gradient in a decoupled optimization. 
 
 Given a low-level goal-reaching reward function $r_{l}(s_t, a_t, s_g^l)$, we can optimize the low-level policy by simply 
 augmenting the state of the agent with the goal commanded by the high-level policy and then optimizing the policy to 
@@ -196,26 +200,25 @@ To effectively incorporate demonstrations into this reinforcement learning proce
 policies at both levels to stay close to the behavior shown in the demonstrations. 
 To incorporate (2), we augment the NPG objective with a max-likelihood objective that ensures that policies at 
 both levels take actions that are consistent with the relabeled demonstration pools $D_{l}$ and $D_{h}$ from 
-Section~\ref{sec:ril}, as described below:  
-\begin{align}
-    \label{eqn:lowlevel}
-    &\nabla_{\phi} J_l = \mathbb{E}[\nabla_{\phi}\log\pi_{\phi}^{l}(a|s,s_g^l) \sum_t r_{l}(s_t, a_t, s_g^l)] + \lambda_l\mathbb{E}_{(s,a,s_g^l) \sim \mathcal{D}_{l}}[\nabla_{\phi}\log\pi_{\phi}^{l}(a|s,s_g^l)]\\
-    \label{eqn:highlevel}
-    &\nabla_{\theta} J_h = \mathbb{E}[\nabla_{\theta}\log\pi_{\theta}^{h}(s_g^l|s,s_g^h) \sum_t r_{h}(s_t, s_g^l, s_g^h)] + \lambda_h\mathbb{E}_{(s,s_g^l,s_g^h) \sim \mathcal{D}_{h}}[\nabla_{\theta}\log\pi_{\theta}^{h}(s_g^l|s,s_g^h)].
-\end{align}
-While a similar objective has been described in~\cite{DAPG, ashvin}, it is yet to be explored in the hierarchical, 
-goal-conditioned scenarios, which makes a significant difference as indicated in our experiments.
+Section [3.2](#Relay-Policy-Learning), as described below:  
+
+$\nabla_{\phi} J_l = \mathbb{E}[\nabla_{\phi}\log\pi_{\phi}^{l}(a|s,s_g^l) \sum_t r_{l}(s_t, a_t, s_g^l)] + \lambda_l\mathbb{E}_{(s,a,s_g^l) \sim \mathcal{D}_{l}}[\nabla_{\phi}\log\pi_{\phi}^{l}(a|s,s_g^l)]$
+
+$\nabla_{\phi} J_h = \mathbb{E}[\nabla_{\theta}\log\pi_{\theta}^{h}(s_g^l|s,s_g^h) \sum_t r_{h}(s_t, s_g^l, s_g^h)] + \lambda_h\mathbb{E}_{(s,s_g^l,s_g^h) \sim \mathcal{D}_{h}}[\nabla_{\theta}\log\pi_{\theta}^{h}(s_g^l|s,s_g^h)]$
+
+While a related objective has been described in <dt-cite key="DAPG">Rajeswaran et al.</dt-cite>, <dt-cite key="ashvin">Nair et al.</dt-cite>, 
+it is yet to be explored in the hierarchical, goal-conditioned scenarios, which makes a significant difference as indicated in our experiments.
 
 In addition, since we are learning goal-conditioned policies at both the low and high level, we can leverage relay 
 data relabeling as described before to also enable the use of off-policy data for fine-tuning.
-Suppose that at a particular iteration $i$, we sampled $N$ trajectories according to the scheme proposed in Sec.~\ref{sec:rpa}. 
+Suppose that at a particular iteration $i$, we sampled $N$ trajectories according to the scheme proposed in Sec [3.2](#Relay-Policy-Learning). 
 While these trajectories did not necessarily reach the goals that were originally commanded, and therefore cannot be 
 considered optimal for those goals, they do end up reaching the actual states visited along the trajectory. 
 Thus, they can be considered as optimal when the goals that they were intended for are relabeled to states along the 
-trajectory via relay data relabeling described in Algorithm~\ref{alg:ril_relabellow}, ~\ref{alg:ril_relabelhigh}. 
+trajectory via relay data relabeling described in Algorithm 2,3. 
 This scheme generates a low-level dataset $\mathcal{D}_{l}^i$ and a high level dataset $\mathcal{D}_{h}^i$ by relabeling 
 the trajectories sampled at iteration $i$. 
-Since these are considered ``optimal'' for reaching goals along the trajectory, they can be added to the buffer of 
+Since these are considered "optimal" for reaching goals along the trajectory, they can be added to the buffer of 
 demonstrations $D_{l}$ and $D_{h}$, thereby contributing to the objective described in the equations above 
 and allowing us to leverage off-policy data during RRF. 
 We experiment with three variants of the fine-tuning update in our experimental evaluation: IRIL-RPL 
@@ -223,38 +226,45 @@ We experiment with three variants of the fine-tuning update in our experimental 
  data as described above), DAPG-RPL (fine-tuning the policy with the update in Eqn~\ref{eqn:lowlevel},~\ref{eqn:highlevel} 
  without the off-policy addition) and NPG-RPL (fine-tuning the policy with the update in Eqn~\ref{eqn:lowlevel},~\ref{eqn:highlevel}, 
  without the off-policy addition or the second maximum likelihood term). 
-The overall method is described in Algorithm~\ref{alg:rpl}.
+The overall method is described in Algorithm 1.
 
-As described in ~\citet{dnc}, it is often difficult to learn multiple tasks together with on-policy policy gradient methods, 
+As described in <dt-cite key="dnc">Ghosh et al.</dt-cite>, it is often difficult to learn multiple tasks together with on-policy policy gradient methods, 
 because of high variance and conflicting gradients. 
 To circumvent these challenges, we use RPL to fine-tune on a number  of different high level goals individually, and 
-then distill all of the learned behaviors into a single policy as described in ~\citet{policydistillation}. 
+then distill all of the learned behaviors into a single policy as described in <dt-cite key="policydistillation">Rusu et al.</dt-cite>. 
 This allows us to learn a single policy capable of achieving multiple high level goals, without dealing with the 
 challenges of multi-task optimization.
 
 
-## Experimental Results
+## 4. Experimental Results
 
 Our experiments aim to answer the following questions: (1) Does RIL improve imitation learning with unstructured and 
 unlabelled demonstrations? (2) Is RIL more amenable to RL fine-tuning than its flat, non-hierarchical alternatives? 
 (3) Can we use RPL to accomplish long-horizon manipulation tasks? Videos and further experimental details are available 
-at \mbox{\url{https://sites.google.com/view/relay-policy-learning}}
+at <https://sites.google.com/view/relay-policy-learning>
 
 **Environment Setup**
 To evaluate our algorithm, we utilize a challenging robotic manipulation environment modeled in MuJoCo, 
-shown in Fig.~\ref{fig:frankakitchen}. The environment consists of a 9 DoF position-controlled Franka robot interacting 
+shown in Fig 1. The environment consists of a 9 DoF position-controlled Franka robot interacting 
 with a kitchen scene that includes an openable microwave, four turnable oven burners, an oven light switch, a freely 
-movable kettle, two hinged cabinets, and a sliding cabinet door. 
-% These elements can be composed in various ways for different tasks, each of which requires manipulating different components. 
-We consider reaching different goals in the environment, as shown in Fig.~\ref{fig:frankatasks}, each of which may 
+movable kettle, two hinged cabinets, and a sliding cabinet door. We consider reaching different goals in the environment, as shown in Fig.5, each of which may 
 require manipulating many different components. 
-For instance, in Fig.~\ref{fig:frankatasks} (a), the robot must open the microwave, move the kettle, turn on the light, 
+For instance, in Fig.5 (a), the robot must open the microwave, move the kettle, turn on the light, 
 and slide open the cabinet. 
 While the goals we consider are temporally extended, the setup is fully general. We collect a set of unstructured and 
-unsegmented human demonstrations described in Sec.~\ref{sec:ril}, using the PUPPET MuJoCo VR system~\cite{puppet}. 
+unsegmented human demonstrations described in Sec [3.2](#Relay-Policy-Learning), using the PUPPET MuJoCo VR system (<dt-cite key="puppet">Kumar et al.</dt-cite>). 
 We provide the algorithm with 400 sequences containing various unstructured demonstrations that each manipulate four 
 different elements of the scene in sequence.
 
+
+<div class="figure">
+<img src="assets/media/franka_tasks.png" style="margin: 0; width: 100%;"/>
+<figcaption>
+Figure 5. Examples of compound goals in the kitchen environment. 
+Each goal has different elements manipulated, requiring multiple stages to solve: (a) microwave, kettle, light, slider, 
+(b) kettle, burner, slider, cabinet, (c) burner, top burner, slide hinge, (d) kettle, microwave, top burner, lights
+</figcaption>
+</div>
 
 **Evaluation and Comparisons**
 Since each of our tasks consist of compound goals that involve manipulating four elements in the environment, we evaluate
@@ -266,50 +276,104 @@ We compare variants of our RPL algorithm to a number of ablations and baselines,
  learning combined with RL and methods that learn from scratch. Among algorithms which utilize imitation learning combined
   with RL, we compare with several methods that utilize flat behavior cloning with additional finetuning. Specifically,
    we compare with (1) flat goal-conditioned behavior cloning followed by finetuning (BC), (2) flat goal-conditioned 
-   behavior cloning trained with data relabeling followed by finetuning (GCBC)~\cite{LMP}, and variants of these
-    algorithms that augment the BC and GCBC fine-tuning with losses as described in~\citet{DAPG} - 
+   behavior cloning trained with data relabeling followed by finetuning (GCBC) (<dt-cite key="LMP">Lynch et al.</dt-cite>), and variants of these
+    algorithms that augment the BC and GCBC fine-tuning with losses as described in <dt-cite key="DAPG">Rajeswaran et al.</dt-cite> - 
     (3) DAPG-BC and (4) DAPG-GCBC. We also compare RPL to (5) hierarchical imitation learning + finetuning 
     with an oracle segmentation scheme, which performs hierarchical goal conditioned imitation learning by using a 
-    hand-specified oracle to segment the demonstrations for imitation learning, followed by RRF style fine-tuning. Details 
-    of this scheme can be found in Appendix 3. For comparisons with methods that learn from scratch we compare with 
-    (6) an on-policy variant of HIRO~\cite{HIRO} trained from scratch with natural policy gradient~\cite{TRPO} 
+    hand-specified oracle to segment the demonstrations for imitation learning, followed by RRF style fine-tuning. For comparisons with methods that learn from scratch we compare with 
+    (6) an on-policy variant of HIRO (<dt-cite key="HIRO">Nachum et al.</dt-cite>) trained from scratch with natural policy gradient (<dt-cite key="TRPO">Schulman et al.</dt-cite>)
     instead of Q-learning and (7)  a baseline (Pre-train low level) that learns low-level primitives from the 
     demonstration data, and learns the high-level goal-setting policy from scratch with RL. The last baseline is representative 
-    of a class of HIL algorithms~\cite{intentionGAN, optionGAN, compile}, which are difficult to fine-tune because it is
+    of a class of HIL algorithms (<dt-cite key="intentionGAN">Hausman et al.</dt-cite>, <dt-cite key="optionGAN">Henderson et al.</dt-cite>, <dt-cite key="compile">Kipf et al.</dt-cite>), which are difficult to fine-tune because it is
      not clear how to provide rewards for improving low-level primitives. Lastly, we compare RPL with a baseline 
      (8) (Nearest Neighbor) which uses a nearest neighbor strategy to choose the demonstration which has the 
      achieved goal closest to the commanded goal and subsequently executes actions open-loop.
 
+
+**Relay Imitation Learning from Unstructured Demonstrations**
+We start by aiming to understand whether RIL improves imitation learning over standard methods.Specifically, we aim to 
+understand if (1) relay imitation learning in isolation gives us an advantage over flat, goal-conditioned behavior 
+cloning, and (2) whether data relabeling provides us gains over imitation learning without relabeling. 
+In this section, we analyze RIL (Section [3.2](#Relay-Policy-Learning)) in isolation, with a discussion of relay reinforcement fine-tuning in the following section. 
+We compare the step-wise completion scores averaged over 17 different compound goals with RIL as compared to 
+flat BC variants. We find that, while none of the variants are able to achieve near-perfect completion scores via just 
+imitation, the average stepwise completion score is higher for RIL as compared to both flat variants (see Table 1, first row). 
+Additionally, we find that the flat policy with data augmentation via relabeling performs better than without relabeling. 
+When we analyze the proportion of compound goals that are actually fully achieved (see Table 1, 
+bottom row), RIL shows significant improvement over other methods. 
+This indicates that, even for imitation learning, we see benefits from introducing the simple RIL scheme described in Sec [3.2](#Relay-Policy-Learning). 
+This indicates that, even for imitation learning, we see benefits from introducing the simple RIL scheme described in Sec [3.2](#Relay-Policy-Learning). 
+
+
+|   | RIL (Ours)  | GCBC with relabeling  | GCBC with NO relabeling  |
+|:---:|:---:|:---:|:---:|
+|   Success Rate|   21.7|   8.8|   7.6|
+|   Average Step Completion|   2.4|   2.2|   1.78|
+*Table 1:* Comparison of  RIL to goal-conditioned behavior cloning with and without relabeling in terms success and step-completion rate averaged across 17 tasks
+
+
+**Relay Reinforcement Fine-tuning of Imitation Learning Policies**
+
+Although pure RIL does succeed at times, its performance is still relatively poor. 
+In this section, we study the degree to which RIL-based policies are amenable to further reinforcement fine-tuning. 
+Performing reinforcement fine-tuning individually on 17 different compound goals seen in the demonstrations, we observe a 
+significant improvement in the average success rate and stepwise completion scores over all the baselines when using any 
+of the variants of RPL (see Fig.6). 
+In our experiments, we found that it was sufficient to fine-tune the low-level policy, although we could also fine-tune 
+both levels, at the cost of more non-stationarity.
+Although the large majority of the benefit is from RRF, we find a very slight additional improvement from the DAPG-RPL and 
+IRIL-RPL schemes, indicating that including the effect of the demonstrations throughout the process possibly helps. 
+
 <div class="figure">
-<video class="b-lazy" data-src="assets/mp4/tasks960x540.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 140%;"></video>
+<img src="assets/media/stepcompletion_cameraready.png" style="margin: 0; width: 80%;"/>
+<img src="assets/media/successrate_cameraready.png" style="margin: 0; width: 80%;"/>
 <figcaption>
-Figure 6: Here we show examples of all 18 evaluation-only manipulation tasks. Demonstrations like these were only provided as training inputs to the behavioral cloning baselines, not the play-supervised models (Play-LMP, Play-GCBC).
+Figure 6. Comparison of the RPL algorithm with a number of baselines averaged over 17 compound goals and 2 (baseline methods) or 3 (our approach) random seeds.  
+    Fine-tuning with all three variants of our method outperforms fine-tuning using flat policies. 
+    Unsurprisingly, RIL initialization at both levels improves the performance over HIRO (<dt-cite key="HIRO">Nachum et al.</dt-cite>) or learning only the high-level policy from scratch. 
+    If we use policy distillation, we are able to get a successful, multi-task goal-conditioned policy.
 </figcaption>
 </div>
 
-\begin{table}[!h]
-\setlength{\tabcolsep}{0.3em}
-\centering
-\footnotesize{
-    \begin{tabular}{l|l|c|c|c|c}
-%    \toprule
-                        &                       & \textbf{success}   &                    &                       &  \textbf{training}\\
-                        &                    & \textbf{with ${\sim}$0.4m}   & \textbf{training} & \textbf{collection}    & \textbf{shots}\\
-        \textbf{Method} &   \textbf{success \%}         & \textbf{perturbations}& data             & \textbf{cost}          & \textbf{per task}\\
-        \hline
-        \hline
-        BC   & $70.3\% \pm 11.7$ & $23.2\%$ & labeled & expensive & 100\\
-        \gcbc & $77.9\% \pm 2.2$  & $68.3\%$ & unlabeled & cheap & 0  \\
-        \lmp  & $\textbf{85.5\%} \pm 1.7$ & $\textbf{78.8\%}$ & unlabeled & cheap & 0\\
-%    \bottomrule
-    \end{tabular}
-\caption{18-task success.}
-\label{tab:debi}
-}
-\end{table}
+When compared with HRL algorithms that learn from scratch (on-policy HIRO), we observe that RPL is able to 
+learn much faster and reach a much higher success rate, showing the benefit of demonstrations. Additionally, we notice 
+better fine-tuning performance when we compare RPL with flat-policy fine-tuning. 
+This can be attributed to the fact that the credit assignment and reward specification problems are much easier for the 
+relay policies, as compared to fine-tuning flat policies, where a sparse reward is rarely obtained.
+The RPL method also outperforms the pre-train-low-level baseline, which we hypothesize is because we are not able to
+ search very effectively in the goal space without further guidance. We also see a significant benefit over using the 
+ oracle scheme, since the segments become longer making the exploration problem more challenging. 
+ The comparison with the nearest neighbor baseline also suggests that there is a significant benefit from actually learning 
+ a *closed-loop* policy rather than using an open-loop policy. While plots in Fig 6. show 
+ the average over various goals when fine-tuned individually, we can also distill the fine-tuned policies into a single,
+  multi-task policy, as described earlier, that is able to solve almost all of the compound goals that 
+  were fine-tuned. 
+While the success rate drops slightly, this gives us a single multi-task policy that can achieve multiple temporally-extended 
+goals (Fig 6). 
+
+**Ablations and Analysis**
+To understand design choices, we consider the role of using different window sizes for RPL as well as the role of 
+reward functions during fine-tuning. In Fig 7 (left), we observe that the window size for RPL plays a major role in algorithm performance. 
+As window size increases, both imitation learning and fine-tuning performance decreases since the behaviors are now more temporally extended.
 
 
-## Related Work 
+<div class="figure">
+<img src="assets/media/successrate_ablation_windowsize.png" style="margin: 0; width: 80%;"/>
+<img src="assets/media/successrate_ablation_reward.png" style="margin: 0; width: 80%;"/>
+<figcaption>
+Figure 7. *Left:* Role of low level window size in RPL. As the window size increases, imitation learning and fine-tuning 
+become less effective. *Right:* Role of fine-tuning reward function in RPL. We see that the sparse reward function is
+ most effective once exploration is sufficiently directed.
+</figcaption>
+</div>
+
+Next, we consider the role of the chosen reward function in fine-tuning with RRF. 
+We evaluate the relative performance of using different types of rewards for fine-tuning - sparse reward, euclidean distance, 
+element-wise reward. When each is used as a goal conditioned reward for fine-tuning the low-level, 
+sparse reward works much better. This indicates that when exploration is sufficient, sparse reward functions are less prone to 
+local optima than alternatives.
+
+## 5. Related Work 
 Typical solutions for solving temporally extended tasks have been proposed under the HRL framework (<dt-cite key="hrlreview">Mahadevan et al.</dt-cite>). 
 Solutions like the options framework (<dt-cite key="options">Singh et al.</dt-cite>, <dt-cite key="option-critic">Bacon et al.</dt-cite>)
 , HAM (<dt-cite key="ham">Parr et al.</dt-cite>), max-Q (<dt-cite key="maxq">Diettrich et al.</dt-cite>), and feudal 
@@ -351,3 +415,16 @@ algorithms (<dt-cite key="DAPG">Rajeswaran et al.</dt-cite>, <dt-cite key="yukeG
 learning with additional auxiliary objectives. In this work, we show that we can learn hierarchical policies in a way that
  can be fine-tuned better than their flat counterparts, owing to temporal decomposition of the problem and the goal conditioned 
  nature of the policy. 
+
+
+## 6. Conclusion
+
+We proposed relay policy learning, a method for solving long-horizon, multi-stage tasks by leveraging unstructured 
+demonstrations to bootstrap a hierarchical learning procedure. 
+We showed that we can learn a single policy capable of achieving multiple compound goals, each requiring temporally extended reasoning. 
+In addition, we demonstrated that RPL significantly outperforms other baselines that utilize hierarchical RL from scratch, 
+as well as imitation learning algorithms. 
+
+In future work, we hope to tackle the problem of generalization to longer sequences and study extrapolation beyond the demonstration data. 
+We also hope to extend our method to work with off-policy RL algorithms, so as to further improve data-efficiency and 
+enable real world learning on a physical robot.  
