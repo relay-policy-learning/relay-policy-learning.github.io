@@ -222,9 +222,9 @@ Since these are considered "optimal" for reaching goals along the trajectory, th
 demonstrations $D_{l}$ and $D_{h}$, thereby contributing to the objective described in the equations above 
 and allowing us to leverage off-policy data during RRF. 
 We experiment with three variants of the fine-tuning update in our experimental evaluation: IRIL-RPL 
-(fine-tuning with Eqn~\ref{eqn:lowlevel},~\ref{eqn:highlevel} and iterative relay data relabeling to incorporate off-policy
- data as described above), DAPG-RPL (fine-tuning the policy with the update in Eqn~\ref{eqn:lowlevel},~\ref{eqn:highlevel} 
- without the off-policy addition) and NPG-RPL (fine-tuning the policy with the update in Eqn~\ref{eqn:lowlevel},~\ref{eqn:highlevel}, 
+(fine-tuning with equations defined above and iterative relay data relabeling to incorporate off-policy
+ data as described above), DAPG-RPL (fine-tuning the policy with the update above 
+ without the off-policy addition) and NPG-RPL (fine-tuning the policy with the update above, 
  without the off-policy addition or the second maximum likelihood term). 
 The overall method is described in Algorithm 1.
 
