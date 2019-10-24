@@ -84,7 +84,7 @@ described below. While RIL by itself is not able to solve the most challenging t
 it provides a very effective initialization for fine-tuning. 
 
 <div class="figure">
-<video class="b-lazy" data-src="assets/mp4/mainfig_video.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
+<img src="assets/media/main_fig.png" style="margin: 0; width: 100%;"/>
 <figcaption>
 Figure 3. Relay policy learning: the algorithm starts with relabelling unstructured demonstrations at both the high and the low level of the hierarchical policy and then uses them to perform relay imitation learning. 
     This provides a good policy initialization for subsequent relay reinforcement fine-tuning. 
@@ -105,12 +105,12 @@ outputs an action $a_t$, which is executed in the environment.
 
 <div class="figure">
 <center>
-<video class="b-lazy" data-src="assets/mp4/samplingfig_video.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 80%;"></video>
-</center>
+<img src="assets/media/sampling_fig-1.png" style="margin: 0; width: 100%;"/>
 <figcaption>
 Figure 4. Relay Policy Architecture: A high level goal setter takes high level goal and 
 sets subgoals for a lower level policy, which acts for a fixed time horizon before resampling the subgoal
 </figcaption>
+</center>
 </div>
 
 Importantly, the goal setting policy $\pi_{\theta}^{h}$ makes a decision every $H$ time steps (set to $30$ in our experiments), 
@@ -255,15 +255,6 @@ unsegmented human demonstrations described in Sec [3.2](#Relay-Policy-Learning),
 We provide the algorithm with 400 sequences containing various unstructured demonstrations that each manipulate four 
 different elements of the scene in sequence.
 
-
-<div class="figure">
-<center><img src="assets/media/franka_kitchen2.png" style="margin: 0; width: 60%;"/>
-<figcaption>
-Figure 2. RPL learns complex, long-horizon manipulation tasks in a simulated kitchen environment
-</figcaption>
-</center>
-</div>
-
 <div class="figure">
 <center>
 <img src="assets/media/tasks.jpeg" style="margin: 0; width: 100%;"/>
@@ -374,6 +365,15 @@ Figure 6. Comparison of the RPL algorithm with a number of baselines averaged ov
 </center>
 </div>
 
+A visualization of the different methods is illuminating - we see that RPL policies perform the task much more successfully than baselines and in a more natural way. 
+<div class="figure">
+<video class="b-lazy" data-src="assets/mp4/concat_comparisons.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
+<center>
+Comparison of RPL learned policies with baseline methods
+</figcaption>
+</center>
+</div>
+
 **Ablations and Analysis**
 To understand design choices, we consider the role of using different window sizes for RPL as well as the role of 
 reward functions during fine-tuning. In Fig 7 (left), we observe that the window size for RPL plays a major role in algorithm performance. 
@@ -403,7 +403,9 @@ We also visualized some failure cases of the algorithm. We see that the robot co
 gets stuck because of difficulties in exploration. This can likely be overcome with more data and better exploration schemes. 
 
 <div class="figure">
-<video class="b-lazy" data-src="assets/mp4/collage_RPL_failures.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
+<center>
+<video class="b-lazy" data-src="assets/mp4/collage_RPL_failures.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 70%;"></video>
+</center>
 </div>
 
 ## 5. Related Work 

@@ -1,15 +1,15 @@
 <!doctype html>
 <head>
-  <title>Learning Latent Plans from Play</title>
+  <title>Relay Policy Learning: Solving Long-Horizon Tasks via Imitation and Reinforcement Learning</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
   <meta name="theme-color" content="#1a4067" />
   <!-- SEO -->
-  <meta property="og:title" content="Learning Latent Plans from Play" />
+  <meta property="og:title" content="Relay Policy Learning: Solving Long-Horizon Tasks via Imitation and Reinforcement Learning" />
   <meta property="og:type" content="article" />
-  <meta property="og:description" content="Latent robotic plans are learned from unlabeled play data." />
+  <meta property="og:description" content="Long horizon tasks are learned via RL + Imitation." />
   <meta property="og:image" content="https://learning-from-play.github.io/assets/img/lmp_logo_rect.png" />
   <meta property="og:url" content="https://learning-from-play.github.io/" />
   <!-- Twitter Card data -->
@@ -137,7 +137,7 @@ Our approach consists of two phases: relay imitation learning (RIL), followed by
 described below. While RIL by itself is not able to solve the most challenging tasks that we consider,
 it provides a very effective initialization for fine-tuning.</p>
 <div class="figure">
-<video class="b-lazy" data-src="assets/mp4/mainfig_video.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
+<img src="assets/media/main_fig.png" style="margin: 0; width: 100%;"/>
 <figcaption>
 Figure 3. Relay policy learning: the algorithm starts with relabelling unstructured demonstrations at both the high and the low level of the hierarchical policy and then uses them to perform relay imitation learning. 
     This provides a good policy initialization for subsequent relay reinforcement fine-tuning. 
@@ -154,12 +154,12 @@ The low-level policy takes the current state <span class="katex"><span class="ka
 outputs an action <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">a_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">a</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">t</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>, which is executed in the environment.</p>
 <div class="figure">
 <center>
-<video class="b-lazy" data-src="assets/mp4/samplingfig_video.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 80%;"></video>
-</center>
+<img src="assets/media/sampling_fig-1.png" style="margin: 0; width: 100%;"/>
 <figcaption>
 Figure 4. Relay Policy Architecture: A high level goal setter takes high level goal and 
 sets subgoals for a lower level policy, which acts for a fixed time horizon before resampling the subgoal
 </figcaption>
+</center>
 </div>
 <p>Importantly, the goal setting policy <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>π</mi><mrow><mi>θ</mi></mrow><mrow><mi>h</mi></mrow></msubsup></mrow><annotation encoding="application/x-tex">\pi_{\theta}^{h}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.849108em;"></span><span class="strut bottom" style="height:1.132216em;vertical-align:-0.2831079999999999em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">π</span><span class="vlist"><span style="top:0.2831079999999999em;margin-left:-0.03588em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit" style="margin-right:0.02778em;">θ</span></span></span></span><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit">h</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> makes a decision every <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi></mrow><annotation encoding="application/x-tex">H</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.08125em;">H</span></span></span></span> time steps (set to <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mn>0</mn></mrow><annotation encoding="application/x-tex">30</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">3</span><span class="mord mathrm">0</span></span></span></span> in our experiments),
 with each of its subgoals being kept constant during that period for the low-level policy, while the low-level policy
@@ -280,13 +280,6 @@ unsegmented human demonstrations described in Sec <a href="#Relay-Policy-Learnin
 We provide the algorithm with 400 sequences containing various unstructured demonstrations that each manipulate four
 different elements of the scene in sequence.</p>
 <div class="figure">
-<center><img src="assets/media/franka_kitchen2.png" style="margin: 0; width: 60%;"/>
-<figcaption>
-Figure 2. RPL learns complex, long-horizon manipulation tasks in a simulated kitchen environment
-</figcaption>
-</center>
-</div>
-<div class="figure">
 <center>
 <img src="assets/media/tasks.jpeg" style="margin: 0; width: 100%;"/>
 <figcaption>
@@ -399,6 +392,14 @@ Figure 6. Comparison of the RPL algorithm with a number of baselines averaged ov
 </figcaption>
 </center>
 </div>
+<p>A visualization of the different methods is illuminating - we see that RPL policies perform the task much more successfully than baselines and in a more natural way.</p>
+<div class="figure">
+<video class="b-lazy" data-src="assets/mp4/concat_comparisons.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
+<center>
+Comparison of RPL learned policies with baseline methods
+</figcaption>
+</center>
+</div>
 <p><strong>Ablations and Analysis</strong>
 To understand design choices, we consider the role of using different window sizes for RPL as well as the role of
 reward functions during fine-tuning. In Fig 7 (left), we observe that the window size for RPL plays a major role in algorithm performance.
@@ -423,7 +424,9 @@ local optima than alternatives.</p>
 We also visualized some failure cases of the algorithm. We see that the robot completes one or two of the steps and then
 gets stuck because of difficulties in exploration. This can likely be overcome with more data and better exploration schemes.</p>
 <div class="figure">
-<video class="b-lazy" data-src="assets/mp4/collage_RPL_failures.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
+<center>
+<video class="b-lazy" data-src="assets/mp4/collage_RPL_failures.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 70%;"></video>
+</center>
 </div>
 <h2>5. Related Work</h2>
 <p>Typical solutions for solving temporally extended tasks have been proposed under the HRL framework (<dt-cite key="hrlreview">Mahadevan et al.</dt-cite>).
