@@ -79,6 +79,9 @@ In particular, we simplify the long-horizon policy learning problem by using a n
 While we rely on demonstration data to bootstrap policy learning, we do not assume access to demonstrations of specific tasks.
 Instead, our approach can leverage unstructured and unsegmented demonstrations of semantically meaningful behaviors that are not only less burdensome to provide, but also can greatly facilitate further improvement using reinforcement learning.
 We demonstrate the effectiveness of our method on a number of multi-stage, long-horizon manipulation tasks in a challenging kitchen simulation environment.</p>
+<div class="figure">
+<video class="b-lazy" data-src="assets/mp4/cropped_RPL_abstract.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
+</div>
 <hr>
 <h2>1. Introduction</h2>
 <p>Recent years have seen reinforcement learning (RL) successfully applied to a number of robotics tasks such as in-hand
@@ -349,6 +352,13 @@ This indicates that, even for imitation learning, we see benefits from introduci
 </tbody>
 </table>
 <p><em>Table 1:</em> Comparison of  RIL to goal-conditioned behavior cloning with and without relabeling in terms success and step-completion rate averaged across 17 tasks</p>
+<div class="figure">
+<video class="b-lazy" data-src="assets/mp4/RIL_videos.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
+<center>
+Performance of relay imitation learning (RIL) on a long horizon task.
+</figcaption>
+</center>
+</div>
 <p><strong>Relay Reinforcement Fine-tuning of Imitation Learning Policies</strong></p>
 <p>Although pure RIL does succeed at times, its performance is still relatively poor.
 In this section, we study the degree to which RIL-based policies are amenable to further reinforcement fine-tuning.

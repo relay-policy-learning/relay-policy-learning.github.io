@@ -10,6 +10,11 @@ We demonstrate the effectiveness of our method on a number of multi-stage, long-
 
 [here]: https://learning-from-play.github.io
 
+<div class="figure">
+<video class="b-lazy" data-src="assets/mp4/cropped_RPL_abstract.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
+</div>
+
+
 ______
 
 
@@ -312,6 +317,15 @@ This indicates that, even for imitation learning, we see benefits from introduci
 |   Success Rate|   21.7|   8.8|   7.6|
 |   Average Step Completion|   2.4|   2.2|   1.78|
 *Table 1:* Comparison of  RIL to goal-conditioned behavior cloning with and without relabeling in terms success and step-completion rate averaged across 17 tasks
+
+
+<div class="figure">
+<video class="b-lazy" data-src="assets/mp4/RIL_videos.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
+<center>
+Performance of relay imitation learning (RIL) on a long horizon task.
+</figcaption>
+</center>
+</div>
 
 
 **Relay Reinforcement Fine-tuning of Imitation Learning Policies**
