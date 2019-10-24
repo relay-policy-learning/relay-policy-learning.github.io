@@ -30,7 +30,7 @@
 
 <div class="cover">
   <h1 class="unselectable">Relay Policy Learning: Solving Long-Horizon Tasks via <br>Imitation and Reinforcement Learning</h1>
-  <video src="assets/mp4/corl_movie_success.mp4" autoplay loop playsinline muted></video>
+  <video src="assets/mp4/successtasks_RPL.mp4" autoplay loop playsinline muted></video>
   <div class="hint unselectable">scroll down</div>
 </div>
 
@@ -81,12 +81,6 @@ Instead, our approach can leverage unstructured and unsegmented demonstrations o
 We demonstrate the effectiveness of our method on a number of multi-stage, long-horizon manipulation tasks in a challenging kitchen simulation environment.</p>
 <hr>
 <h2>1. Introduction</h2>
-<div class="figure">
-<img src="assets/media/franka_kitchen2.png" style="margin: 0; width: 100%;"/>
-<figcaption>
-Figure 2. RPL learns complex, long-horizon manipulation tasks in a simulated kitchen environment
-</figcaption>
-</div>
 <p>Recent years have seen reinforcement learning (RL) successfully applied to a number of robotics tasks such as in-hand
 manipulation(<dt-cite key="vikashICRA2016">Kumar et al.</dt-cite>), grasping(<dt-cite key="kalashnikov2018qt">Kalashnikov et al.</dt-cite>)
 and door opening (<dt-cite key="shaneDDPG">Gu et al.</dt-cite>). However, these applications have been largely constrained
@@ -140,7 +134,7 @@ Our approach consists of two phases: relay imitation learning (RIL), followed by
 described below. While RIL by itself is not able to solve the most challenging tasks that we consider,
 it provides a very effective initialization for fine-tuning.</p>
 <div class="figure">
-<img src="assets/media/main_fig2-1.png" style="margin: 0; width: 100%;"/>
+<video class="b-lazy" data-src="assets/mp4/mainfig_video.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
 <figcaption>
 Figure 3. Relay policy learning: the algorithm starts with relabelling unstructured demonstrations at both the high and the low level of the hierarchical policy and then uses them to perform relay imitation learning. 
     This provides a good policy initialization for subsequent relay reinforcement fine-tuning. 
@@ -156,7 +150,9 @@ The high-level policy <span class="katex"><span class="katex-mathml"><math><sema
 The low-level policy takes the current state <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>s</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">s_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">s</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">t</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>, and the subgoal <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>s</mi><mi>g</mi><mrow><mi>l</mi></mrow></msubsup></mrow><annotation encoding="application/x-tex">s_g^{l}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.849108em;"></span><span class="strut bottom" style="height:1.232216em;vertical-align:-0.383108em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">s</span><span class="vlist"><span style="top:0.24700000000000003em;margin-left:0em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.03588em;">g</span></span></span><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> commanded by the high-level policy and
 outputs an action <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">a_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">a</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">t</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>, which is executed in the environment.</p>
 <div class="figure">
-<center><img src="assets/media/sampling_fig-1.png" style="margin: 0; width: 60%;"/></center>
+<center>
+<video class="b-lazy" data-src="assets/mp4/samplingfig_video.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 80%;"></video>
+</center>
 <figcaption>
 Figure 4. Relay Policy Architecture: A high level goal setter takes high level goal and 
 sets subgoals for a lower level policy, which acts for a fixed time horizon before resampling the subgoal
@@ -252,9 +248,9 @@ Since these are considered &quot;optimal&quot; for reaching goals along the traj
 demonstrations <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>D</mi><mrow><mi>l</mi></mrow></msub></mrow><annotation encoding="application/x-tex">D_{l}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.02778em;">D</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.02778em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>D</mi><mrow><mi>h</mi></mrow></msub></mrow><annotation encoding="application/x-tex">D_{h}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.02778em;">D</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.02778em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">h</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>, thereby contributing to the objective described in the equations above
 and allowing us to leverage off-policy data during RRF.
 We experiment with three variants of the fine-tuning update in our experimental evaluation: IRIL-RPL
-(fine-tuning with Eqn~\ref{eqn:lowlevel},~\ref{eqn:highlevel} and iterative relay data relabeling to incorporate off-policy
-data as described above), DAPG-RPL (fine-tuning the policy with the update in Eqn~\ref{eqn:lowlevel},~\ref{eqn:highlevel}
-without the off-policy addition) and NPG-RPL (fine-tuning the policy with the update in Eqn~\ref{eqn:lowlevel},~\ref{eqn:highlevel},
+(fine-tuning with equations defined above and iterative relay data relabeling to incorporate off-policy
+data as described above), DAPG-RPL (fine-tuning the policy with the update above
+without the off-policy addition) and NPG-RPL (fine-tuning the policy with the update above,
 without the off-policy addition or the second maximum likelihood term).
 The overall method is described in Algorithm 1.</p>
 <p>As described in <dt-cite key="dnc">Ghosh et al.</dt-cite>, it is often difficult to learn multiple tasks together with on-policy policy gradient methods,
@@ -281,12 +277,19 @@ unsegmented human demonstrations described in Sec <a href="#Relay-Policy-Learnin
 We provide the algorithm with 400 sequences containing various unstructured demonstrations that each manipulate four
 different elements of the scene in sequence.</p>
 <div class="figure">
-<img src="assets/media/franka_tasks.png" style="margin: 0; width: 100%;"/>
+<center><img src="assets/media/franka_kitchen2.png" style="margin: 0; width: 60%;"/>
 <figcaption>
-Figure 5. Examples of compound goals in the kitchen environment. 
-Each goal has different elements manipulated, requiring multiple stages to solve: (a) microwave, kettle, light, slider, 
-(b) kettle, burner, slider, cabinet, (c) burner, top burner, slide hinge, (d) kettle, microwave, top burner, lights
+Figure 2. RPL learns complex, long-horizon manipulation tasks in a simulated kitchen environment
 </figcaption>
+</center>
+</div>
+<div class="figure">
+<center>
+<img src="assets/media/tasks.jpeg" style="margin: 0; width: 100%;"/>
+<figcaption>
+Figure 5. Examples of compound goals in the kitchen environment.
+</figcaption>
+</center>
 </div>
 <p><strong>Evaluation and Comparisons</strong>
 Since each of our tasks consist of compound goals that involve manipulating four elements in the environment, we evaluate
@@ -357,14 +360,7 @@ both levels, at the cost of more non-stationarity.
 Although the large majority of the benefit is from RRF, we find a very slight additional improvement from the DAPG-RPL and
 IRIL-RPL schemes, indicating that including the effect of the demonstrations throughout the process possibly helps.</p>
 <div class="figure">
-<img src="assets/media/stepcompletion_cameraready.png" style="margin: 0; width: 80%;"/>
-<img src="assets/media/successrate_cameraready.png" style="margin: 0; width: 80%;"/>
-<figcaption>
-Figure 6. Comparison of the RPL algorithm with a number of baselines averaged over 17 compound goals and 2 (baseline methods) or 3 (our approach) random seeds.  
-    Fine-tuning with all three variants of our method outperforms fine-tuning using flat policies. 
-    Unsurprisingly, RIL initialization at both levels improves the performance over HIRO (<dt-cite key="HIRO">Nachum et al.</dt-cite>) or learning only the high-level policy from scratch. 
-    If we use policy distillation, we are able to get a successful, multi-task goal-conditioned policy.
-</figcaption>
+<video class="b-lazy" data-src="assets/mp4/collage_RPL_success.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
 </div>
 <p>When compared with HRL algorithms that learn from scratch (on-policy HIRO), we observe that RPL is able to
 learn much faster and reach a much higher success rate, showing the benefit of demonstrations. Additionally, we notice
@@ -381,24 +377,44 @@ multi-task policy, as described earlier, that is able to solve almost all of the
 were fine-tuned.
 While the success rate drops slightly, this gives us a single multi-task policy that can achieve multiple temporally-extended
 goals (Fig 6).</p>
+<div class="figure">
+<center>
+<img src="assets/media/stepcompletion_cameraready.png" style="margin: 0; width: 60%;"/>
+<img src="assets/media/successrate_cameraready.png" style="margin: 0; width: 60%;"/>
+<figcaption>
+Figure 6. Comparison of the RPL algorithm with a number of baselines averaged over 17 compound goals and 2 (baseline methods) or 3 (our approach) random seeds.  
+    Fine-tuning with all three variants of our method outperforms fine-tuning using flat policies. 
+    Unsurprisingly, RIL initialization at both levels improves the performance over HIRO (<dt-cite key="HIRO">Nachum et al.</dt-cite>) or learning only the high-level policy from scratch. 
+    If we use policy distillation, we are able to get a successful, multi-task goal-conditioned policy.
+</figcaption>
+</center>
+</div>
 <p><strong>Ablations and Analysis</strong>
 To understand design choices, we consider the role of using different window sizes for RPL as well as the role of
 reward functions during fine-tuning. In Fig 7 (left), we observe that the window size for RPL plays a major role in algorithm performance.
 As window size increases, both imitation learning and fine-tuning performance decreases since the behaviors are now more temporally extended.</p>
 <div class="figure">
-<img src="assets/media/successrate_ablation_windowsize.png" style="margin: 0; width: 80%;"/>
-<img src="assets/media/successrate_ablation_reward.png" style="margin: 0; width: 80%;"/>
+<center>
+<img src="assets/media/successrate_ablation_windowsize.png" style="margin: 0; width: 60%;"/>
+<img src="assets/media/successrate_ablation_reward.png" style="margin: 0; width: 60%;"/>
 <figcaption>
 Figure 7. *Left:* Role of low level window size in RPL. As the window size increases, imitation learning and fine-tuning 
 become less effective. *Right:* Role of fine-tuning reward function in RPL. We see that the sparse reward function is
  most effective once exploration is sufficiently directed.
 </figcaption>
+</center>
 </div>
 <p>Next, we consider the role of the chosen reward function in fine-tuning with RRF.
 We evaluate the relative performance of using different types of rewards for fine-tuning - sparse reward, euclidean distance,
 element-wise reward. When each is used as a goal conditioned reward for fine-tuning the low-level,
 sparse reward works much better. This indicates that when exploration is sufficient, sparse reward functions are less prone to
 local optima than alternatives.</p>
+<p><strong>Failure Cases</strong>
+We also visualized some failure cases of the algorithm. We see that the robot completes one or two of the steps and then
+gets stuck because of difficulties in exploration. This can likely be overcome with more data and better exploration schemes.</p>
+<div class="figure">
+<video class="b-lazy" data-src="assets/mp4/collage_RPL_failures.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
+</div>
 <h2>5. Related Work</h2>
 <p>Typical solutions for solving temporally extended tasks have been proposed under the HRL framework (<dt-cite key="hrlreview">Mahadevan et al.</dt-cite>).
 Solutions like the options framework (<dt-cite key="options">Singh et al.</dt-cite>, <dt-cite key="option-critic">Bacon et al.</dt-cite>)

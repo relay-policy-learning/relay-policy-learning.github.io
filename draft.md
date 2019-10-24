@@ -15,14 +15,6 @@ ______
 
 ## 1. Introduction
 
-<div class="figure">
-<img src="assets/media/franka_kitchen2.png" style="margin: 0; width: 100%;"/>
-<figcaption>
-Figure 2. RPL learns complex, long-horizon manipulation tasks in a simulated kitchen environment
-</figcaption>
-</div>
-
-
 Recent years have seen reinforcement learning (RL) successfully applied to a number of robotics tasks such as in-hand 
 manipulation(<dt-cite key="vikashICRA2016">Kumar et al.</dt-cite>), grasping(<dt-cite key="kalashnikov2018qt">Kalashnikov et al.</dt-cite>) 
 and door opening (<dt-cite key="shaneDDPG">Gu et al.</dt-cite>). However, these applications have been largely constrained 
@@ -87,7 +79,7 @@ described below. While RIL by itself is not able to solve the most challenging t
 it provides a very effective initialization for fine-tuning. 
 
 <div class="figure">
-<img src="assets/media/main_fig2-1.png" style="margin: 0; width: 100%;"/>
+<video class="b-lazy" data-src="assets/mp4/mainfig_video.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
 <figcaption>
 Figure 3. Relay policy learning: the algorithm starts with relabelling unstructured demonstrations at both the high and the low level of the hierarchical policy and then uses them to perform relay imitation learning. 
     This provides a good policy initialization for subsequent relay reinforcement fine-tuning. 
@@ -107,7 +99,9 @@ The low-level policy takes the current state $s_t$, and the subgoal $s_g^{l}$ co
 outputs an action $a_t$, which is executed in the environment. 
 
 <div class="figure">
-<center><img src="assets/media/sampling_fig-1.png" style="margin: 0; width: 60%;"/></center>
+<center>
+<video class="b-lazy" data-src="assets/mp4/samplingfig_video.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 80%;"></video>
+</center>
 <figcaption>
 Figure 4. Relay Policy Architecture: A high level goal setter takes high level goal and 
 sets subgoals for a lower level policy, which acts for a fixed time horizon before resampling the subgoal
@@ -258,12 +252,20 @@ different elements of the scene in sequence.
 
 
 <div class="figure">
-<img src="assets/media/franka_tasks.png" style="margin: 0; width: 100%;"/>
+<center><img src="assets/media/franka_kitchen2.png" style="margin: 0; width: 60%;"/>
 <figcaption>
-Figure 5. Examples of compound goals in the kitchen environment. 
-Each goal has different elements manipulated, requiring multiple stages to solve: (a) microwave, kettle, light, slider, 
-(b) kettle, burner, slider, cabinet, (c) burner, top burner, slide hinge, (d) kettle, microwave, top burner, lights
+Figure 2. RPL learns complex, long-horizon manipulation tasks in a simulated kitchen environment
 </figcaption>
+</center>
+</div>
+
+<div class="figure">
+<center>
+<img src="assets/media/tasks.jpeg" style="margin: 0; width: 100%;"/>
+<figcaption>
+Figure 5. Examples of compound goals in the kitchen environment.
+</figcaption>
+</center>
 </div>
 
 **Evaluation and Comparisons**
@@ -324,15 +326,9 @@ both levels, at the cost of more non-stationarity.
 Although the large majority of the benefit is from RRF, we find a very slight additional improvement from the DAPG-RPL and 
 IRIL-RPL schemes, indicating that including the effect of the demonstrations throughout the process possibly helps. 
 
+
 <div class="figure">
-<img src="assets/media/stepcompletion_cameraready.png" style="margin: 0; width: 80%;"/>
-<img src="assets/media/successrate_cameraready.png" style="margin: 0; width: 80%;"/>
-<figcaption>
-Figure 6. Comparison of the RPL algorithm with a number of baselines averaged over 17 compound goals and 2 (baseline methods) or 3 (our approach) random seeds.  
-    Fine-tuning with all three variants of our method outperforms fine-tuning using flat policies. 
-    Unsurprisingly, RIL initialization at both levels improves the performance over HIRO (<dt-cite key="HIRO">Nachum et al.</dt-cite>) or learning only the high-level policy from scratch. 
-    If we use policy distillation, we are able to get a successful, multi-task goal-conditioned policy.
-</figcaption>
+<video class="b-lazy" data-src="assets/mp4/collage_RPL_success.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
 </div>
 
 When compared with HRL algorithms that learn from scratch (on-policy HIRO), we observe that RPL is able to 
@@ -351,6 +347,19 @@ The RPL method also outperforms the pre-train-low-level baseline, which we hypot
 While the success rate drops slightly, this gives us a single multi-task policy that can achieve multiple temporally-extended 
 goals (Fig 6). 
 
+<div class="figure">
+<center>
+<img src="assets/media/stepcompletion_cameraready.png" style="margin: 0; width: 60%;"/>
+<img src="assets/media/successrate_cameraready.png" style="margin: 0; width: 60%;"/>
+<figcaption>
+Figure 6. Comparison of the RPL algorithm with a number of baselines averaged over 17 compound goals and 2 (baseline methods) or 3 (our approach) random seeds.  
+    Fine-tuning with all three variants of our method outperforms fine-tuning using flat policies. 
+    Unsurprisingly, RIL initialization at both levels improves the performance over HIRO (<dt-cite key="HIRO">Nachum et al.</dt-cite>) or learning only the high-level policy from scratch. 
+    If we use policy distillation, we are able to get a successful, multi-task goal-conditioned policy.
+</figcaption>
+</center>
+</div>
+
 **Ablations and Analysis**
 To understand design choices, we consider the role of using different window sizes for RPL as well as the role of 
 reward functions during fine-tuning. In Fig 7 (left), we observe that the window size for RPL plays a major role in algorithm performance. 
@@ -358,13 +367,15 @@ As window size increases, both imitation learning and fine-tuning performance de
 
 
 <div class="figure">
-<img src="assets/media/successrate_ablation_windowsize.png" style="margin: 0; width: 80%;"/>
-<img src="assets/media/successrate_ablation_reward.png" style="margin: 0; width: 80%;"/>
+<center>
+<img src="assets/media/successrate_ablation_windowsize.png" style="margin: 0; width: 60%;"/>
+<img src="assets/media/successrate_ablation_reward.png" style="margin: 0; width: 60%;"/>
 <figcaption>
 Figure 7. *Left:* Role of low level window size in RPL. As the window size increases, imitation learning and fine-tuning 
 become less effective. *Right:* Role of fine-tuning reward function in RPL. We see that the sparse reward function is
  most effective once exploration is sufficiently directed.
 </figcaption>
+</center>
 </div>
 
 Next, we consider the role of the chosen reward function in fine-tuning with RRF. 
@@ -372,6 +383,14 @@ We evaluate the relative performance of using different types of rewards for fin
 element-wise reward. When each is used as a goal conditioned reward for fine-tuning the low-level, 
 sparse reward works much better. This indicates that when exploration is sufficient, sparse reward functions are less prone to 
 local optima than alternatives.
+
+**Failure Cases**
+We also visualized some failure cases of the algorithm. We see that the robot completes one or two of the steps and then 
+gets stuck because of difficulties in exploration. This can likely be overcome with more data and better exploration schemes. 
+
+<div class="figure">
+<video class="b-lazy" data-src="assets/mp4/collage_RPL_failures.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
+</div>
 
 ## 5. Related Work 
 Typical solutions for solving temporally extended tasks have been proposed under the HRL framework (<dt-cite key="hrlreview">Mahadevan et al.</dt-cite>). 
