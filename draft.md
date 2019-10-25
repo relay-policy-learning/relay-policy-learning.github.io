@@ -8,8 +8,6 @@ While we rely on demonstration data to bootstrap policy learning, we do not assu
 Instead, our approach can leverage unstructured and unsegmented demonstrations of semantically meaningful behaviors that are not only less burdensome to provide, but also can greatly facilitate further improvement using reinforcement learning. 
 We demonstrate the effectiveness of our method on a number of multi-stage, long-horizon manipulation tasks in a challenging kitchen simulation environment.
 
-[here]: https://learning-from-play.github.io
-
 <div class="figure">
 <video class="b-lazy" data-src="assets/mp4/cropped_RPL_abstract.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
 </div>
@@ -126,20 +124,22 @@ generates an action $a_t$ at every time step.
 
 **Relay Imitation Learning**
 
-Our problem setting assumes access to a pool of unstructured, unlabelled demonstrations $\mathcal{D}$ that correspond to 
-meaningful activities provided by the user, without any particular task in mind, e.g. opening cabinet doors, 
+Our problem setting assumes access to a pool of unstructured, unlabelled "play" demonstrations 
+(<dt-cite key="LMP">Lynch et al.</dt-cite>) $\mathcal{D}$ that correspond to 
+meaningful activities provided by the user, without any single particular task in mind, e.g. opening cabinet doors, 
 playing with different objects, or simply tidying up the scene. 
 We do not assume that this demonstration data actually accomplishes any of the final task goals that we will need to solve 
 at test-time, though we do need to assume that the test-time goals come from the same distribution of goals as those accomplished in the demonstration data.
 In order to take the most advantage of such data, we initialize our policy with our proposed relay imitation learning (RIL) algorithm. 
-RIL is a simple imitation learning procedure that uses goal relabeling and hierarchical policy decomposition which result 
-in improved handling of multi-task generalization and compounding error. RIL assumes access to the pool of demonstrations 
-(as described in <dt-cite key="LMP">Lynch et al.</dt-cite>) consisting of $N$ trajectories $\mathcal{D} = \{\tau^i, \tau^j, \tau^k, ...\}$, where 
-each trajectory consists of state-action pairs $\tau^i = \{s_0^i, a_0^i, ...., s_T^i, a_T^i\}$. 
-Importantly, these demonstrations can be attempting to reach a variety of different high level goals $s_g^h$, but we do 
-not require these goals to be specified explicitly. To learn the relay policy from these demonstrations, we construct 
-a low-level dataset $\mathcal{D}_l$, and a high-level dataset $\mathcal{D}_h$ from these demonstrations via "relay data relabeling",
- which is described below, and use them to learn $\pi_{\theta}^{h}$ and $\pi_{\theta}^{l}$ via supervised learning at multiple levels. 
+RIL is a simple imitation learning procedure that builds on the goal relabeling scheme described in <dt-cite key="LMP">Lynch et al.</dt-cite> for the hierarchical setting, 
+resulting in improved handling of multi-task generalization and compounding error. RIL assumes access to the pool of demonstrations 
+consisting of $N$ trajectories $\mathcal{D} = \{\tau^i, \tau^j, \tau^k, ...\}$, where each trajectory consists of state-action 
+pairs $\tau^i = \{s_0^i, a_0^i, ..., s_T^i, a_T^i\}$. 
+Importantly, these demonstrations can be attempting to reach a variety of different high level goals $s_g^h$, but we do not 
+require these goals to be specified explicitly. To learn the relay policy from these demonstrations, we construct a low-level 
+dataset $\mathcal{D}_l$, and a high-level dataset $\mathcal{D}_h$ from these demonstrations via ``relay data relabeling", 
+which is described below, and use them to learn $\pi_{\theta}^{h}$ and $\pi_{\theta}^{l}$ via supervised learning at multiple levels. 
+
 
 We construct the low-level dataset by iterating through the pool of demonstrations and relabeling them using our 
 relay data relabelling algorithm. First, we choose a window size $W_{l}$ and generate state-goal-action tuples for 
