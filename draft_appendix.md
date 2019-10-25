@@ -1,6 +1,6 @@
 ## Acknowledgments
 
-We thank Byron David for designing and iterating on our playground environment. We would also like to thank Ofir Nachum, 
+We thank Byron David for helping design and improve our kitchen environment. We would also like to thank Ofir Nachum, 
 Suraj Nair, Shane Gu, Chelsea Finn and Anusha Nagabandi for many fruitful discussions.
 
 This article was prepared using the [Distill](https://distill.pub) [template](https://github.com/distillpub/template).
