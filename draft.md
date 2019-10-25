@@ -239,8 +239,7 @@ challenges of multi-task optimization.
 
 Our experiments aim to answer the following questions: (1) Does RIL improve imitation learning with unstructured and 
 unlabelled demonstrations? (2) Is RIL more amenable to RL fine-tuning than its flat, non-hierarchical alternatives? 
-(3) Can we use RPL to accomplish long-horizon manipulation tasks? Videos and further experimental details are available 
-at <https://sites.google.com/view/relay-policy-learning>
+(3) Can we use RPL to accomplish long-horizon manipulation tasks?
 
 **Environment Setup**
 To evaluate our algorithm, we utilize a challenging robotic manipulation environment modeled in MuJoCo, 

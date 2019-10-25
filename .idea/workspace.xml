@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3817b1a2-3bfd-43ef-be3d-04fc75910703" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/draft.md" beforeDir="false" afterPath="$PROJECT_DIR$/draft.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,21 +17,21 @@
         <entry file="file://$PROJECT_DIR$/draft.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="265">
-                <caret line="406" column="64" selection-start-line="406" selection-start-column="64" selection-end-line="406" selection-end-column="64" />
+              <first_editor relative-caret-position="205">
+                <caret line="241" column="65" selection-start-line="241" selection-start-column="65" selection-end-line="241" selection-end-column="65" />
               </first_editor>
               <second_editor />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-240">
+            <state relative-caret-position="300">
               <caret line="38" column="58" selection-start-line="38" selection-start-column="58" selection-end-line="38" selection-end-column="58" />
               <folding>
-                <element signature="e#3287#3310#0" expanded="true" />
+                <element signature="e#3446#3469#0" expanded="true" />
                 <element signature="e#5113#5149#0" expanded="true" />
                 <element signature="e#9303#9325#0" expanded="true" />
                 <element signature="e#9360#9402#0" expanded="true" />
@@ -1108,7 +1109,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/style.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
@@ -1139,7 +1140,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>``</find>
       <find>div&gt;</find>
       <find>DAPG</find>
       <find>kumar201</find>
@@ -1169,6 +1169,7 @@
       <find>play</find>
       <find>Yuke</find>
       <find>video</find>
+      <find>sites.s</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -1180,9 +1181,9 @@
         <option value="$PROJECT_DIR$/draft_bib.html" />
         <option value="$PROJECT_DIR$/draft_appendix.md" />
         <option value="$PROJECT_DIR$/draft_header.html" />
+        <option value="$PROJECT_DIR$/style.css" />
         <option value="$PROJECT_DIR$/draft.md" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/style.css" />
       </list>
     </option>
   </component>
@@ -1306,16 +1307,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/draft.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="265">
-            <caret line="406" column="64" selection-start-line="406" selection-start-column="64" selection-end-line="406" selection-end-column="64" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/appendix_end">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1336,12 +1327,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/draft.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="205">
+            <caret line="241" column="65" selection-start-line="241" selection-start-column="65" selection-end-line="241" selection-end-column="65" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-240">
+        <state relative-caret-position="300">
           <caret line="38" column="58" selection-start-line="38" selection-start-column="58" selection-end-line="38" selection-end-column="58" />
           <folding>
-            <element signature="e#3287#3310#0" expanded="true" />
+            <element signature="e#3446#3469#0" expanded="true" />
             <element signature="e#5113#5149#0" expanded="true" />
             <element signature="e#9303#9325#0" expanded="true" />
             <element signature="e#9360#9402#0" expanded="true" />
@@ -2385,13 +2393,6 @@
             <element signature="e#200519#200549#0" expanded="true" />
             <element signature="e#201802#201837#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
         </state>
       </provider>
     </entry>
