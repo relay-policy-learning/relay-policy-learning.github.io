@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3817b1a2-3bfd-43ef-be3d-04fc75910703" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/draft_header.html" beforeDir="false" afterPath="$PROJECT_DIR$/draft_header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/draft.md" beforeDir="false" afterPath="$PROJECT_DIR$/draft.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,12 +13,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/draft.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
               <first_editor relative-caret-position="265">
-                <caret line="367" column="166" selection-start-line="367" selection-start-column="166" selection-end-line="367" selection-end-column="166" />
+                <caret line="406" column="64" selection-start-line="406" selection-start-column="64" selection-end-line="406" selection-end-column="64" />
               </first_editor>
               <second_editor />
             </state>
@@ -67,7 +68,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/draft_header.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-226">
@@ -121,8 +122,8 @@
         <option value="$PROJECT_DIR$/draft_bib.html" />
         <option value="$PROJECT_DIR$/draft_appendix.md" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/draft.md" />
         <option value="$PROJECT_DIR$/draft_header.html" />
+        <option value="$PROJECT_DIR$/draft.md" />
       </list>
     </option>
   </component>
@@ -246,20 +247,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/draft.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="265">
-            <caret line="367" column="166" selection-start-line="367" selection-start-column="166" selection-end-line="367" selection-end-column="166" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/draft_header.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-226">
           <caret line="18" column="91" selection-start-line="18" selection-start-column="91" selection-end-line="18" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/draft.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="265">
+            <caret line="406" column="64" selection-start-line="406" selection-start-column="64" selection-end-line="406" selection-end-column="64" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

@@ -333,7 +333,7 @@ IRIL-RPL schemes, indicating that including the effect of the demonstrations thr
 
 
 <div class="figure">
-<video class="b-lazy" data-src="assets/mp4/collage_RPL_success.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
+<video class="b-lazy" data-src="assets/mp4/collage_RPL_success2.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 100%;"></video>
 </div>
 
 When compared with HRL algorithms that learn from scratch (on-policy HIRO), we observe that RPL is able to 
@@ -404,7 +404,7 @@ gets stuck because of difficulties in exploration. This can likely be overcome w
 
 <div class="figure">
 <center>
-<video class="b-lazy" data-src="assets/mp4/collage_RPL_failures.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 70%;"></video>
+<video class="b-lazy" data-src="assets/mp4/collage_RPL_failures2.mp4" type="video/mp4" autoplay muted playsinline loop style="display: block; width: 70%;"></video>
 </center>
 </div>
 
