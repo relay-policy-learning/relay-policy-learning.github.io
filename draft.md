@@ -40,7 +40,7 @@ such that they can be easily fine-tuned using RL during the second phase.
 In contrast to HRL methods, our method takes advantage of unstructured demonstrations to bootstrap further fine-tuning, 
 and in contrast to conventional HIL methods, it does not focus on careful subtask segmentation, making the method simple, general and very amenable to further reinforcement fine-tuning. In particular, we show that we can develop an imitation and reinforcement learning approach that while not necessarily perfect at imitation learning, is very amenable to improvement via fine-tuning with reinforcement learning and that can be scaled to challenging long-horizon manipulation tasks.
 
-First, the approach is very general, in that it can be applied to any demonstration data, including easy to provide
+What are the advantages of using such an algorithm? First, the approach is very general, in that it can be applied to any demonstration data, including easy to provide
  unsegmented, unstructured and undifferentiated demonstrations of meaningful behaviors. Second, our method does not 
  require any explicit form of skill segmentation or subgoal definition, which otherwise would need to be learned or 
  explicitly provided. Lastly, and most importantly, since our method ensures that every low-level trajectory is 
